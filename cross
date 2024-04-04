@@ -1,0 +1,22 @@
+import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LogisticRegression
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Create a logistic regression model
+model = LogisticRegression()
+
+# Perform 5-fold cross-validation
+scores = cross_val_score(model, X, y, cv=5)
+
+# Print the cross-validation scores
+print("Cross-Validation Scores:", scores)
+
+# Print the mean and standard deviation of the cross-validation scores
+print("Mean Cross-Validation Score:", np.mean(scores))
+print("Standard Deviation of Cross-Validation Scores:", np.std(scores))
